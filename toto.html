@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday 🎂</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#6a11cb,#2575fc);
+  font-family:'Segoe UI',sans-serif;
+  overflow:hidden;
+  color:white;
+}
+
+.card{
+  text-align:center;
+  background:rgba(255,255,255,0.1);
+  padding:40px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  animation:pop 1s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.5);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+h1{
+  font-size:2.5em;
+  margin-bottom:10px;
+}
+
+.typing{
+  border-right:3px solid white;
+  white-space:nowrap;
+  overflow:hidden;
+  width:0;
+  animation:typing 6s steps(60,end) forwards, blink .7s infinite;
+}
+
+@keyframes typing{
+  to{width:100%;}
+}
+
+@keyframes blink{
+  50%{border-color:transparent;}
+}
+
+/* confetti */
+.confetti{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:red;
+  top:-10px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>🎂 Selamat Ulang Tahun Toto 🎉</h1>
+  <p class="typing" id="msg"></p>
+</div>
+
+<script>
+const text = "Semoga panjang umur, Sehat Selalu dan Sukses🎉";
+let i=0;
+
+function type(){
+  if(i<text.length){
+    document.getElementById("msg").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type,50);
+  }
+}
+type();
+
+/* confetti generator */
+for(let i=0;i<80;i++){
+  let conf=document.createElement("div");
+  conf.classList.add("confetti");
+  conf.style.left=Math.random()*100+"vw";
+  conf.style.animationDuration=(Math.random()*3+2)+"s";
+  conf.style.backgroundColor=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(conf);
+}
+</script>
+
+</body>
+</html>

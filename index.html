@@ -4,7 +4,139 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday 🎂</title>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Ulang Tahun toto🎁</title>
 
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg,#0f2027,#203a43,#2c5364);
+  height:100vh;
+  color:white;
+  text-align:center;
+}
+
+/* ANIME TITLE */
+h1{
+  margin-top:40px;
+  font-size:3em;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 10px #fff,0 0 20px #ff00ff;}
+  to{ text-shadow:0 0 20px #00ffff,0 0 40px #00ffff;}
+}
+
+/* GIFT BOX */
+.gift{
+  width:150px;
+  height:150px;
+  background:#ff4d6d;
+  margin:100px auto;
+  position:relative;
+  border-radius:10px;
+  cursor:pointer;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{ transform:translateY(0);}
+  50%{ transform:translateY(-20px);}
+}
+
+.ribbon{
+  position:absolute;
+  width:100%;
+  height:20px;
+  background:gold;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.ribbon::after{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:100%;
+  background:gold;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* MESSAGE */
+.message{
+  display:none;
+  font-size:1.5em;
+  width:80%;
+  margin:auto;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(0.5);}
+  to{opacity:1; transform:scale(1);}
+}
+
+/* STARS */
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle{
+  50%{opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>✨Selamat Ulang Tahun Toto✨</h1>
+<p>Klik kado untuk membuka hadiah 🎁</p>
+
+<div class="gift" onclick="openGift()">
+  <div class="ribbon"></div>
+</div>
+
+<div class="message" id="msg">
+  🎉 Surprise! 🎉 <br><br>
+ Selamat Ulang Tahun Toto
+  Semoga panjang umur,Sukses dan sehat selalu🌟<br><br>
+Chan Squad 16,februari,2026
+</div>
+
+<script>
+
+/* OPEN GIFT */
+function openGift(){
+  document.querySelector(".gift").style.display="none";
+  document.getElementById("msg").style.display="block";
+}
+
+/* STAR GENERATOR */
+for(let i=0;i<150;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  s.style.animationDuration=(1+Math.random()*3)+"s";
+  document.body.appendChild(s);
+}
+
+</script>
+
+</body>
+</html>
 <style>
 body{
   margin:0;
